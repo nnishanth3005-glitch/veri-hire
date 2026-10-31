@@ -1,0 +1,223 @@
+---
+name: Editorial Sovereign
+colors:
+  surface: '#fcf9f3'
+  surface-dim: '#dcdad4'
+  surface-bright: '#fcf9f3'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f6f3ed'
+  surface-container: '#f0eee8'
+  surface-container-high: '#ebe8e2'
+  surface-container-highest: '#e5e2dc'
+  on-surface: '#1c1c18'
+  on-surface-variant: '#434842'
+  inverse-surface: '#31312d'
+  inverse-on-surface: '#f3f0ea'
+  outline: '#747872'
+  outline-variant: '#c3c8c0'
+  surface-tint: '#526353'
+  primary: '#152418'
+  on-primary: '#ffffff'
+  primary-container: '#2a3a2c'
+  on-primary-container: '#92a492'
+  inverse-primary: '#b9cbb8'
+  secondary: '#6b5b57'
+  on-secondary: '#ffffff'
+  secondary-container: '#f4ded9'
+  on-secondary-container: '#71615d'
+  tertiary: '#411000'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#612209'
+  on-tertiary-container: '#e38767'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#d5e8d3'
+  primary-fixed-dim: '#b9cbb8'
+  on-primary-fixed: '#101f13'
+  on-primary-fixed-variant: '#3a4b3c'
+  secondary-fixed: '#f4ded9'
+  secondary-fixed-dim: '#d7c2bd'
+  on-secondary-fixed: '#241916'
+  on-secondary-fixed-variant: '#524440'
+  tertiary-fixed: '#ffdbcf'
+  tertiary-fixed-dim: '#ffb59b'
+  on-tertiary-fixed: '#380d00'
+  on-tertiary-fixed-variant: '#763218'
+  background: '#fcf9f3'
+  on-background: '#1c1c18'
+  surface-variant: '#e5e2dc'
+typography:
+  headline-xl:
+    fontFamily: Playfair Display
+    fontSize: 48px
+    fontWeight: '600'
+    lineHeight: 56px
+  headline-xl-mobile:
+    fontFamily: Playfair Display
+    fontSize: 32px
+    fontWeight: '600'
+    lineHeight: 40px
+  headline-lg:
+    fontFamily: Playfair Display
+    fontSize: 36px
+    fontWeight: '600'
+    lineHeight: 44px
+  headline-lg-mobile:
+    fontFamily: Playfair Display
+    fontSize: 26px
+    fontWeight: '600'
+    lineHeight: 34px
+  headline-md:
+    fontFamily: Playfair Display
+    fontSize: 28px
+    fontWeight: '600'
+    lineHeight: 36px
+  headline-sm:
+    fontFamily: Playfair Display
+    fontSize: 22px
+    fontWeight: '500'
+    lineHeight: 30px
+  title-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 24px
+  title-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 15px
+    fontWeight: '600'
+    lineHeight: 20px
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 20px
+  body-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 12px
+    fontWeight: '400'
+    lineHeight: 18px
+  label-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 13px
+    fontWeight: '600'
+    lineHeight: 16px
+  label-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 14px
+  mono-metric:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 13px
+    fontWeight: '500'
+    lineHeight: 18px
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1.5rem
+  gutter-mobile: 1rem
+  margin: 2.5rem
+  margin-mobile: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 1rem
+  space-lg: 1.5rem
+  space-xl: 2.5rem
+---
+
+## Brand & Style
+
+This design system establishes an editorial enterprise luxury aesthetic tailored for high-stakes synthetic identity detection and deepfake forensic auditing in Indian enterprise talent ecosystems. The personality is authoritative, calm, and uncompromisingly precise—evoking the gravitas of a heritage verification institution blended with the clinical rigor of elite forensic technology.
+
+The aesthetic rejects the generic tropes of modern cybersecurity—there are no neon accents, glowing cyber blues, dark-mode terminal visuals, or aggressive telemetry graphs. Instead, the UI channels high-end print publishing, bespoke archival dossiers, and legal-grade documentation:
+- Generous structural whitespace balanced with disciplined hairline borders.
+- Tactile, warm paper-inspired surfaces that reduce cognitive exhaustion during intensive multi-candidate verification workflows.
+- Deliberate typography pairing classical editorial serifs with geometric, human-centric data presentation.
+- Understated high-consequence state communication: warnings and threat alerts present as dignified, warm terracotta rather than alarming synthetic reds.
+
+## Colors
+
+The palette is rooted in archival warmth, natural pigments, and high-contrast readability. Every surface, text hierarchy, and state indicator relies on organic mineral and vegetal tones.
+
+### Color Roles & Distribution
+- **Canvas Background (`#F9F6F0`)**: Warm Cream forms the baseline canvas across screens, mitigating screen glare and reinforcing physical stationery qualities.
+- **Surfaces & Cards (`#FFFFFF`)**: Pure White is reserved for elevated panels, data tables, modals, and forensic report sheets, delineated with hairline borders (`#E5E0D8`).
+- **Primary Accent & Interactive Elements (`#2A3A2C`)**: Deep Forest Green serves as the anchor for primary buttons, dominant data tags, selected navigation items, and active forensic progress markers.
+- **Secondary & Body Typography (`#2D211E`)**: Deep Espresso replaces harsh pure black, providing deep, legible contrast with subtle warmth for editorial titles and UI content.
+- **High Risk & Tamper Alerts (`#B46244`)**: Terracotta signals synthetic manipulation, facial desynchronization, voice anomalies, and candidate impersonation risk.
+- **Pass & Verified Status (`#6B8E6B`)**: Muted Sage Green denotes biometric validation, government credential integrity, and authenticity assurance.
+- **Muted Structural Neutral (`#E5E0D8`)**: Linen Gray defines dividing lines, card outlines, column partitions, and tab boundaries.
+
+## Typography
+
+The type system balances intellectual prestige with dense data legibility:
+- **Playfair Display**: Used selectively for executive-level screen headlines, dossier banners, forensic certification summaries, and high-impact identity posture scores. It provides an editorial rhythm reminiscent of trusted broadsheet journalism and legal charters.
+- **Plus Jakarta Sans**: Drives operational interfaces, biometric breakdown lists, metadata readouts, verification tabs, and form controls. Its humanist proportions and crisp geometric clarity maintain effortless legibility across dense verification tables.
+- **Data & Numeric Formats**: Quantitative metrics (confidence percentages, frame tamper counts, latency figures) use `Plus Jakarta Sans` set to tabular figures (`font-variant-numeric: tabular-nums`) with `font-weight: 500` or `600` to prevent visual column shifting during real-time stream audits.
+
+## Layout & Spacing
+
+The layout philosophy follows a disciplined grid structure inspired by editorial broadsheets:
+- **Grid Architecture**: 12-column layout on desktop screens (1440px max fluid content boundary), 8 columns on tablet viewports, and 4 columns on mobile.
+- **Rhythm & Whitespace**: Generous outer margins (`margin`: 2.5rem) enforce composure and prevent sensory clutter. Section groups use `space-xl` (40px) separation, creating breathing room around forensic scorecards and identity dossiers.
+- **Alignment Rules**: All card content, data rows, and inspector panels align strictly to the 4px baseline matrix. Content reflows horizontally into split inspector panes on desktop (dossier listing on left 40%, multi-angle biometric and deepfake frame timeline inspection on right 60%).
+
+## Elevation & Depth
+
+Visual hierarchy prioritizes precision over dramatized depth. The system avoids heavy shadows, blur glares, or synthetic glow states:
+- **Low-Contrast Hairlines**: Structural boundaries rely on `1px solid #E5E0D8`. Depth between canvas and content is achieved primarily by placing Pure White (`#FFFFFF`) containers against the Warm Cream (`#F9F6F0`) background.
+- **Warm Ambient Shadow**: When elevation is required for floating inspectors, dropdowns, and flyout forensic tools, the shadow is tinted with the neutral undertone: `0 4px 16px rgba(45, 33, 30, 0.04), 0 1px 3px rgba(45, 33, 30, 0.03)`.
+- **Modals and Forensic Dossiers**: Overlays employ a soft warm veil (`rgba(45, 33, 30, 0.25)`) with an elevated card shadow of `0 12px 32px rgba(45, 33, 30, 0.08)` paired with an inner border of `1px solid #E5E0D8`.
+
+## Shapes
+
+The geometric framework is uniform and disciplined. All cards, input containers, modals, table wrappers, and interactive controls adhere to a strict 8px border radius (`0.5rem`).
+
+Pill variations are reserved solely for status tags, candidate security badges, and verification risk indicators. All structural surfaces and interactive panels maintain crisp 8px corners to preserve the structured architectural presence of print stationery.
+
+## Components
+
+### Buttons
+- **Primary**: Background `#2A3A2C`, text `#FFFFFF`, border `1px solid #2A3A2C`, radius 8px, height 40px, padding `0 18px`. Hover: `#1E2B20`. Active: `#151F16`.
+- **Secondary / Outline**: Background `#FFFFFF`, text `#2D211E`, border `1px solid #E5E0D8`, radius 8px, height 40px. Hover: background `#F9F6F0`, border `#2D211E`.
+- **Destructive / Flag Tamper**: Background `#B46244`, text `#FFFFFF`, border `1px solid #B46244`, radius 8px. Hover: `#9C5237`.
+
+### Badges & Status Pills
+- **Verified / Authentic**: Background `rgba(107, 142, 107, 0.12)`, text `#3D593D`, border `1px solid rgba(107, 142, 107, 0.3)`, radius 9999px (pill), text uppercase `11px`, letter-spacing `0.04em`.
+- **Synthetic Detected / High Risk**: Background `rgba(180, 98, 68, 0.12)`, text `#8E3E23`, border `1px solid rgba(180, 98, 68, 0.3)`, radius 9999px (pill), text uppercase `11px`, letter-spacing `0.04em`.
+- **Under Review / Processing**: Background `rgba(45, 33, 30, 0.06)`, text `#2D211E`, border `1px solid #E5E0D8`, radius 9999px.
+
+### Cards & Data Panels
+- Background `#FFFFFF`, border `1px solid #E5E0D8`, radius 8px, padding `24px`.
+- Card headers feature an editorial section divider: a `1px solid #E5E0D8` underline separating title, biometric metadata, and the main inspection view.
+
+### Data Tables
+- Header row: background `#F9F6F0`, text `#2D211E`, `12px` semi-bold uppercase, `1px solid #E5E0D8` bottom border, height 44px.
+- Table body rows: background `#FFFFFF`, alternating hover state `#FAF8F5`, row height 52px, cell padding `0 16px`, hairline dividing border `1px solid #E5E0D8`.
+- Metric columns (e.g., Liveness Score, Audio Sync Confidence) utilize right-aligned monospace numbers.
+
+### Input Fields & Controls
+- **Inputs**: Background `#FFFFFF`, border `1px solid #E5E0D8`, text `#2D211E`, placeholder `rgba(45, 33, 30, 0.4)`, radius 8px, height 40px, padding `0 12px`. Focus state: border `1px solid #2A3A2C` with zero synthetic glow.
+- **Checkboxes & Radios**: Custom square (8px radius on container, 4px on checkbox box) in `#FFFFFF` with `1.5px solid #2A3A2C`. Checked state fills with `#2A3A2C` featuring a pure cream checkmark.
+
+### Tabs
+- High-end document dossier style: horizontal bar aligned above cards.
+- Active tab features a bottom border indicator of `2px solid #2A3A2C`, text color `#2A3A2C` (`font-weight: 600`), and subtle warm background tint `rgba(42, 58, 44, 0.04)`.
+- Inactive tabs use text color `rgba(45, 33, 30, 0.6)`.
+
+### Forensic Evidence Timeline (Domain-Specific)
+- Used during video deepfake frame-by-frame analysis.
+- Frame scrubber bar set against `#F9F6F0` track with a `1px solid #E5E0D8` border. Flagged artifact frames are highlighted with vertical pins in `#B46244`, while verified authentic temporal sequences are underlined in `#6B8E6B`.

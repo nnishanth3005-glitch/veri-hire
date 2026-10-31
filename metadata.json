@@ -1,0 +1,11 @@
+{
+  "name": "Remix Editorial Sovereign — Deepfake Forensic Bureau",
+  "description": "High-stakes synthetic identity detection and deepfake forensic auditing for Indian enterprise talent ecosystems with editorial broadsheet aesthetics.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

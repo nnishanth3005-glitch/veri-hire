@@ -1,0 +1,242 @@
+{
+  "entities": {
+    "CandidateDossier": {
+      "title": "CandidateDossier",
+      "description": "Enterprise forensic deepfake audit dossier for an executive, principal, or engineer candidate.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique dossier identifier, e.g. DOS-2026-IND-0982",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "maxLength": 64
+        },
+        "name": {
+          "type": "string",
+          "description": "Candidate full name",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Candidate prospective title or role",
+          "maxLength": 128
+        },
+        "organization": {
+          "type": "string",
+          "description": "Target enterprise organization",
+          "maxLength": 128
+        },
+        "location": {
+          "type": "string",
+          "description": "Geographic location",
+          "maxLength": 128
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "Candidate portrait image URL",
+          "maxLength": 1024
+        },
+        "interviewDate": {
+          "type": "string",
+          "description": "Date and time of candidate interview",
+          "maxLength": 64
+        },
+        "status": {
+          "type": "string",
+          "description": "Forensic audit determination",
+          "enum": ["authentic", "synthetic_detected", "under_review"]
+        },
+        "overallAuthenticityScore": {
+          "type": "number",
+          "description": "Percentage score from 0 to 100"
+        },
+        "livenessConfidence": {
+          "type": "number",
+          "description": "Volumetric liveness confidence score"
+        },
+        "audioVisualSyncScore": {
+          "type": "number",
+          "description": "Phoneme-viseme temporal correlation score"
+        },
+        "facialMeshCoherence": {
+          "type": "number",
+          "description": "468-point 3D facial landmark mesh stability"
+        },
+        "rppgPulseBpm": {
+          "type": "number",
+          "description": "Remote photoplethysmography micro-vascular pulse rate"
+        },
+        "aadhaarVaultStatus": {
+          "type": "string",
+          "description": "Sovereign biometric ledger status",
+          "enum": ["verified", "tampered", "unverified"]
+        },
+        "digiLockerReference": {
+          "type": "string",
+          "description": "DigiLocker verifiable credential reference string",
+          "maxLength": 128
+        },
+        "flaggedFrameCount": {
+          "type": "number",
+          "description": "Count of anomaly frames identified"
+        },
+        "videoDurationSec": {
+          "type": "number",
+          "description": "Session video length in seconds"
+        },
+        "summaryNotes": {
+          "type": "string",
+          "description": "Lead examiner editorial notes",
+          "maxLength": 2048
+        },
+        "technicalFinding": {
+          "type": "string",
+          "description": "Hardware level forensic telemetry summary",
+          "maxLength": 2048
+        },
+        "certifyingOfficial": {
+          "type": "string",
+          "description": "Examiner badge or ID certifying the report",
+          "maxLength": 128
+        },
+        "notarizedAt": {
+          "type": "string",
+          "description": "Timestamp string of legal notarization",
+          "maxLength": 64
+        },
+        "cryptographicHash": {
+          "type": "string",
+          "description": "SHA-256 integrity digest",
+          "maxLength": 128
+        },
+        "enterpriseClearanceLevel": {
+          "type": "string",
+          "description": "Clearance tier for position",
+          "enum": ["Tier-1 Executive", "Tier-2 Principal", "Tier-3 Engineering"]
+        },
+        "linkedInUrl": {
+          "type": "string",
+          "description": "Verified LinkedIn public profile URL",
+          "maxLength": 512
+        },
+        "linkedInVerified": {
+          "type": "boolean",
+          "description": "Whether social identity graph matched biometric record"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User UID who recorded or audited this dossier",
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "role",
+        "organization",
+        "status",
+        "overallAuthenticityScore"
+      ]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable ledger record of forensic decisions, calibrations, and certification actions.",
+      "type": "object",
+      "properties": {
+        "candidateId": {
+          "type": "string",
+          "description": "Target dossier ID",
+          "maxLength": 64
+        },
+        "candidateName": {
+          "type": "string",
+          "description": "Name of candidate evaluated",
+          "maxLength": 128
+        },
+        "action": {
+          "type": "string",
+          "description": "Action executed",
+          "maxLength": 64
+        },
+        "details": {
+          "type": "string",
+          "description": "Technical narrative of decision",
+          "maxLength": 1024
+        },
+        "examinerId": {
+          "type": "string",
+          "description": "Auditor badge or UID",
+          "maxLength": 128
+        },
+        "examinerEmail": {
+          "type": "string",
+          "description": "Auditor Google account email",
+          "maxLength": 128
+        },
+        "previousStatus": {
+          "type": "string",
+          "description": "Status before modification",
+          "maxLength": 64
+        },
+        "newStatus": {
+          "type": "string",
+          "description": "Status after modification",
+          "maxLength": 64
+        }
+      },
+      "required": ["action", "examinerId"]
+    },
+    "Examiner": {
+      "title": "Examiner",
+      "description": "Registered Lead Forensic Auditor profile.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "Examiner email",
+          "maxLength": 128
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Examiner display name",
+          "maxLength": 128
+        },
+        "badgeNumber": {
+          "type": "string",
+          "description": "Accredited Bureau badge ID",
+          "maxLength": 64
+        },
+        "role": {
+          "type": "string",
+          "description": "Forensic clearance rank",
+          "maxLength": 64
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Examiner avatar URL",
+          "maxLength": 1024
+        }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/candidates/{candidateId}": {
+      "schema": "CandidateDossier",
+      "description": "Collection of candidate forensic dossiers and deepfake audit telemetry."
+    },
+    "/audit_logs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Immutable tamper-evident ledger of all auditor determinations."
+    },
+    "/examiners/{examinerId}": {
+      "schema": "Examiner",
+      "description": "Profiles and credentials for forensic examiners."
+    }
+  }
+}

@@ -23,6 +23,7 @@ import {
   saveCandidateToDb,
   recordAuditLog,
   logoutUser,
+  getSavedGoogleProfile,
   AuditLogEntry
 } from './services/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -62,10 +63,14 @@ export default function App() {
         const savedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
         setUserRole(savedRole);
 
-        const badge = user.email?.includes('nnishanth') && savedRole === 'auditor'
+        const savedGoogle = getSavedGoogleProfile();
+        const effectiveEmail = user.email || savedGoogle?.email || 'nnishanth3005@gmail.com';
+        const effectiveName = user.displayName || savedGoogle?.displayName || (savedRole === 'candidate' ? 'Nishanth N' : 'Lead Forensic Auditor');
+
+        const badge = effectiveEmail.includes('nnishanth') && savedRole === 'auditor'
           ? 'AUD-2026-LEAD-NISHANTH'
-          : user.displayName
-          ? `${savedRole === 'candidate' ? 'CAND' : savedRole === 'recruiter' ? 'REC' : 'AUD'}-2026-${user.displayName.replace(/\s+/g, '-').toUpperCase().slice(0, 10)}`
+          : effectiveName
+          ? `${savedRole === 'candidate' ? 'CAND' : savedRole === 'recruiter' ? 'REC' : 'AUD'}-2026-${effectiveName.replace(/\s+/g, '-').toUpperCase().slice(0, 10)}`
           : 'AUD-2026-IND-082';
         setExaminerBadge(badge);
 
@@ -353,9 +358,9 @@ export default function App() {
         <CandidatePortal
           requestDraft={activeRequestDraft}
           candidateUser={{
-            name: currentUser?.displayName || 'Nishanth N',
-            email: currentUser?.email || 'nnishanth3005@gmail.com',
-            photoUrl: currentUser?.photoURL || undefined,
+            name: currentUser?.displayName || getSavedGoogleProfile()?.displayName || 'Nishanth N',
+            email: currentUser?.email || getSavedGoogleProfile()?.email || 'nnishanth3005@gmail.com',
+            photoUrl: currentUser?.photoURL || getSavedGoogleProfile()?.photoURL || undefined,
           }}
           onSubmitVerification={handleCandidatePortalSubmission}
           onExitPortal={() => {

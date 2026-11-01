@@ -55,10 +55,18 @@ export default function App() {
   };
 
   // 1. Listen to Firebase Authentication State
+  // Rule: When someone clicks the link or opens the site, the Login Page must ALWAYS be displayed first.
   useEffect(() => {
-    const hasInitialSession = localStorage.getItem('verihire_session_authenticated') === 'true';
-    const initialSavedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
-    if (hasInitialSession) {
+    // Only restore session if the user explicitly logged in within this active browser tab session
+    const hasActiveSession = sessionStorage.getItem('verihire_active_session') === 'true';
+
+    if (!hasActiveSession) {
+      // Force Login Screen on fresh link click
+      setIsAuthenticated(false);
+      setCurrentScreen('screen1_login');
+      localStorage.removeItem('verihire_session_authenticated');
+    } else {
+      const initialSavedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
       setIsAuthenticated(true);
       setUserRole(initialSavedRole);
       if (initialSavedRole === 'candidate') setCurrentScreen('candidate_portal');
@@ -69,13 +77,9 @@ export default function App() {
     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        setIsAuthenticated(true);
-        localStorage.setItem('verihire_session_authenticated', 'true');
-        const savedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
-        setUserRole(savedRole);
-
         const savedGoogle = getSavedGoogleProfile();
         const effectiveEmail = user.email || savedGoogle?.email || 'nnishanth3005@gmail.com';
+        const savedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
         const effectiveName = user.displayName || savedGoogle?.displayName || (savedRole === 'candidate' ? 'Nishanth N' : 'Lead Forensic Auditor');
 
         const badge = effectiveEmail.includes('nnishanth') && savedRole === 'auditor'
@@ -85,18 +89,23 @@ export default function App() {
           : 'AUD-2026-IND-082';
         setExaminerBadge(badge);
 
-        setCurrentScreen((prev) => {
-          if (prev === 'screen1_login') {
-            if (savedRole === 'candidate') return 'candidate_portal';
-            if (savedRole === 'recruiter') return 'recruiter_console';
-            return 'screen2_dashboard';
-          }
-          return prev;
-        });
+        // Only transition away from login if the user has an active tab session (already confirmed login in UI)
+        const sessionActive = sessionStorage.getItem('verihire_active_session') === 'true';
+        if (sessionActive) {
+          setIsAuthenticated(true);
+          setUserRole(savedRole);
+          setCurrentScreen((prev) => {
+            if (prev === 'screen1_login') {
+              if (savedRole === 'candidate') return 'candidate_portal';
+              if (savedRole === 'recruiter') return 'recruiter_console';
+              return 'screen2_dashboard';
+            }
+            return prev;
+          });
+        }
       } else {
-        // Only kick back to login if there is NO active local session
-        const hasSession = localStorage.getItem('verihire_session_authenticated') === 'true';
-        if (!hasSession) {
+        const sessionActive = sessionStorage.getItem('verihire_active_session') === 'true';
+        if (!sessionActive) {
           setIsAuthenticated(false);
           setCurrentScreen('screen1_login');
         }
@@ -189,6 +198,7 @@ export default function App() {
   ) => {
     setIsAuthenticated(true);
     setUserRole(role);
+    sessionStorage.setItem('verihire_active_session', 'true');
     localStorage.setItem('verihire_user_role', role);
     localStorage.setItem('verihire_session_authenticated', 'true');
     if (identityDetails?.id) {
@@ -209,6 +219,7 @@ export default function App() {
   const handleSignOut = async () => {
     try {
       await logoutUser();
+      sessionStorage.removeItem('verihire_active_session');
       localStorage.removeItem('verihire_user_role');
       localStorage.removeItem('verihire_session_authenticated');
       localStorage.removeItem('verihire_google_profile');

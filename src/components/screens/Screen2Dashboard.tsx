@@ -466,29 +466,37 @@ export const Screen2Dashboard: React.FC<Screen2DashboardProps> = ({
                     </p>
 
                     <div className="mt-2.5 flex items-center justify-between gap-1.5">
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         {candidate.riskSignals?.classification === 'VERIFIED_HUMAN' || candidate.status === 'authentic' ? (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[rgba(107,142,107,0.12)] text-[#3D593D] border border-[rgba(107,142,107,0.3)]">
-                            <ShieldCheck className="w-3 h-3" /> Verified Human
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#3D593D]/10 text-[#3D593D] border border-[#3D593D]/30">
+                            <ShieldCheck className="w-3 h-3" /> Real Human (Safe)
                           </span>
                         ) : candidate.riskSignals?.classification === 'HIGH_RISK' || candidate.status === 'synthetic_detected' ? (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#B46244]/12 text-[#B46244] border border-[#B46244]/30">
-                            <ShieldAlert className="w-3 h-3" /> High Risk
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#B46244]/15 text-[#B46244] border border-[#B46244]/40">
+                            <ShieldAlert className="w-3 h-3" /> AI Deepfake (Blocked)
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-700 border border-amber-500/30">
-                            <Clock className="w-3 h-3" /> Review
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-700 border border-amber-500/40">
+                            <Clock className="w-3 h-3" /> ID Mismatch (Review)
                           </span>
                         )}
 
-                        <span className="text-[10px] font-mono text-[#2A3A2C]/60">
+                        <span className="text-[10px] font-sans text-[#2A3A2C]/65 hidden sm:inline">
                           {candidate.riskSignals?.idDocumentType || 'DigiLocker'}
                         </span>
                       </div>
 
-                      <div className="text-right">
-                        <span className="font-mono text-xs font-bold text-[#2A3A2C]">
-                          Risk: {riskScore}%
+                      <div className="text-right shrink-0">
+                        <span
+                          className={`font-mono text-xs font-extrabold ${
+                            riskScore <= 30
+                              ? 'text-[#3D593D]'
+                              : riskScore <= 60
+                              ? 'text-amber-600'
+                              : 'text-[#B46244]'
+                          }`}
+                        >
+                          {riskScore <= 30 ? '0 Risk' : `${riskScore}% Risk`}
                         </span>
                       </div>
                     </div>

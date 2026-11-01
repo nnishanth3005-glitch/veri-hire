@@ -131,7 +131,7 @@ export const Screen3Report: React.FC<Screen3ReportProps> = ({
           </div>
         </div>
 
-        {/* View Mode Toggle: Risk Engine vs Frame Telemetry */}
+        {/* View Mode Toggle: Overview & 5 Checks vs Video Player */}
         <div className="flex flex-col sm:items-end gap-2">
           <div className="flex items-center gap-1 bg-[#F9F6F0] p-1 rounded-lg border border-[#E5E0D8]">
             <button
@@ -140,7 +140,7 @@ export const Screen3Report: React.FC<Screen3ReportProps> = ({
                 activeTab === 'risk_engine' ? 'bg-[#FFFFFF] text-[#2A3A2C] shadow-xs' : 'text-[#2A3A2C]/60 hover:text-[#2A3A2C]'
               }`}
             >
-              Explainable Risk Engine (5-Signals)
+              📊 Overview & 5 Checks
             </button>
             <button
               onClick={() => setActiveTab('video_telemetry')}
@@ -148,7 +148,7 @@ export const Screen3Report: React.FC<Screen3ReportProps> = ({
                 activeTab === 'video_telemetry' ? 'bg-[#FFFFFF] text-[#2A3A2C] shadow-xs' : 'text-[#2A3A2C]/60 hover:text-[#2A3A2C]'
               }`}
             >
-              Video & Frame Scrubber
+              🎬 Video Player & Frames
             </button>
           </div>
 
@@ -158,7 +158,7 @@ export const Screen3Report: React.FC<Screen3ReportProps> = ({
               className="text-xs font-sans text-[#2A3A2C]/70 hover:text-[#2A3A2C] underline underline-offset-2 flex items-center gap-1 cursor-pointer"
             >
               <SlidersHorizontal className="w-3 h-3" />
-              <span>Auditor Override</span>
+              <span>Auditor Decision Override</span>
             </button>
           </div>
         </div>

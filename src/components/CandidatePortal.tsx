@@ -344,7 +344,7 @@ export const CandidatePortal: React.FC<CandidatePortalProps> = ({
             <button
               onClick={onExitPortal}
               title="Sign Out of Candidate Portal"
-              className="h-9 px-3.5 rounded-lg border border-[#B46244]/40 bg-[#B46244]/10 text-[#B46244] hover:bg-[#B46244] hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors text-xs font-sans font-semibold shrink-0 shadow-xs"
+              className="h-9 px-3.5 rounded-lg bg-[#B46244] hover:bg-[#9B4A2F] text-white flex items-center gap-1.5 cursor-pointer transition-colors text-xs font-sans font-bold shrink-0 shadow-xs active:scale-95"
             >
               <LogOut className="w-3.5 h-3.5 shrink-0" />
               <span>Sign Out</span>

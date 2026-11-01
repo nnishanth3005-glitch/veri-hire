@@ -123,8 +123,8 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Center: Persistent Role-Aware Nav Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#F9F6F0] p-1 rounded-lg border border-[#E5E0D8]">
+          {/* Center: Persistent Role-Aware Nav Links (Visible on Wide Desktop so Right Controls are never pushed off) */}
+          <nav className="hidden xl:flex items-center gap-1 bg-[#F9F6F0] p-1 rounded-lg border border-[#E5E0D8]">
             {userRole === 'candidate' ? (
               /* Candidate View: Insulated navigation */
               <button
@@ -262,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Right: Role Switcher for Hackathon Judges + Screen Selector + Sign Out */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Quick Role Switcher Pill for judges */}
-            <div className="hidden lg:flex items-center gap-1 px-2.5 py-1 bg-[#F9F6F0] border border-[#E5E0D8] rounded-lg shrink-0">
+            <div className="flex items-center gap-1 px-2.5 py-1 bg-[#F9F6F0] border border-[#E5E0D8] rounded-lg shrink-0">
               <span className="text-[10px] uppercase font-mono tracking-wider text-[#2A3A2C]/60 font-semibold">
                 Role:
               </span>
@@ -285,7 +285,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Quick Screen Picker */}
-            <div className="relative inline-block shrink-0">
+            <div className="relative inline-block shrink-0 hidden sm:inline-block">
               <select
                 value={currentScreen}
                 onChange={(e) => onNavigateScreen(e.target.value as ScreenId)}
@@ -305,11 +305,11 @@ export const Header: React.FC<HeaderProps> = ({
               <ChevronDown className="w-3.5 h-3.5 text-[#2A3A2C]/60 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
 
-            {/* Sign Out Button - Always Visible Without Scrolling */}
+            {/* Sign Out Button - Bold, High-Contrast Red Pill (Always Visible Without Scrolling) */}
             <button
               onClick={onSignOut}
               title="Sign Out to Login Screen"
-              className="shrink-0 h-9 px-3 rounded-lg border border-[#B46244]/40 bg-[#B46244]/10 text-[#B46244] hover:bg-[#B46244] hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors text-xs font-sans font-bold shadow-xs"
+              className="shrink-0 h-9 px-3.5 rounded-lg bg-[#B46244] hover:bg-[#9B4A2F] text-white flex items-center gap-1.5 cursor-pointer transition-colors text-xs font-sans font-bold shadow-xs active:scale-95"
             >
               <LogOut className="w-3.5 h-3.5 shrink-0" />
               <span>Sign Out</span>
@@ -318,6 +318,48 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Mobile / Tablet Horizontal Navigation Tabs */}
+        <div className="xl:hidden border-t border-[#E5E0D8] px-3 py-2 flex items-center justify-between gap-1 overflow-x-auto bg-[#FFFFFF]">
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => onNavigateScreen('screen2_dashboard')}
+              className={`px-2.5 py-1 text-xs font-sans rounded whitespace-nowrap cursor-pointer ${
+                currentScreen === 'screen2_dashboard' || currentScreen === 'screen3_report'
+                  ? 'bg-[#2A3A2C] text-white font-semibold'
+                  : 'text-[#2A3A2C]/70 hover:bg-[#F9F6F0]'
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => onNavigateScreen('recruiter_console')}
+              className={`px-2.5 py-1 text-xs font-sans rounded whitespace-nowrap cursor-pointer ${
+                currentScreen === 'recruiter_console'
+                  ? 'bg-[#2A3A2C] text-white font-semibold'
+                  : 'text-[#2A3A2C]/70 hover:bg-[#F9F6F0]'
+              }`}
+            >
+              Recruiter
+            </button>
+            <button
+              onClick={() => onNavigateScreen('candidate_portal')}
+              className={`px-2.5 py-1 text-xs font-sans rounded whitespace-nowrap cursor-pointer ${
+                currentScreen === 'candidate_portal'
+                  ? 'bg-[#3D593D] text-white font-semibold'
+                  : 'text-[#3D593D] hover:bg-[#3D593D]/10'
+              }`}
+            >
+              Candidate Portal
+            </button>
+          </div>
+
+          <button
+            onClick={onSignOut}
+            className="px-2.5 py-1 text-xs font-sans font-bold text-[#B46244] bg-[#B46244]/10 hover:bg-[#B46244] hover:text-white rounded whitespace-nowrap cursor-pointer flex items-center gap-1 ml-auto"
+          >
+            <LogOut className="w-3 h-3" />
+            <span>Sign Out</span>
+          </button>
+        </div>
         <div className="md:hidden border-t border-[#E5E0D8] px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto bg-[#FFFFFF]">
           <button
             onClick={() => onNavigateScreen('screen2_dashboard')}

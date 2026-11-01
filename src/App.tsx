@@ -56,10 +56,21 @@ export default function App() {
 
   // 1. Listen to Firebase Authentication State
   useEffect(() => {
+    const hasInitialSession = localStorage.getItem('verihire_session_authenticated') === 'true';
+    const initialSavedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
+    if (hasInitialSession) {
+      setIsAuthenticated(true);
+      setUserRole(initialSavedRole);
+      if (initialSavedRole === 'candidate') setCurrentScreen('candidate_portal');
+      else if (initialSavedRole === 'recruiter') setCurrentScreen('recruiter_console');
+      else setCurrentScreen('screen2_dashboard');
+    }
+
     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
         setIsAuthenticated(true);
+        localStorage.setItem('verihire_session_authenticated', 'true');
         const savedRole = (localStorage.getItem('verihire_user_role') as UserRole) || 'auditor';
         setUserRole(savedRole);
 
@@ -83,8 +94,12 @@ export default function App() {
           return prev;
         });
       } else {
-        setIsAuthenticated(false);
-        setCurrentScreen('screen1_login');
+        // Only kick back to login if there is NO active local session
+        const hasSession = localStorage.getItem('verihire_session_authenticated') === 'true';
+        if (!hasSession) {
+          setIsAuthenticated(false);
+          setCurrentScreen('screen1_login');
+        }
       }
       setAuthLoading(false);
     });
@@ -175,6 +190,7 @@ export default function App() {
     setIsAuthenticated(true);
     setUserRole(role);
     localStorage.setItem('verihire_user_role', role);
+    localStorage.setItem('verihire_session_authenticated', 'true');
     if (identityDetails?.id) {
       setExaminerBadge(identityDetails.id);
     }
@@ -194,6 +210,8 @@ export default function App() {
     try {
       await logoutUser();
       localStorage.removeItem('verihire_user_role');
+      localStorage.removeItem('verihire_session_authenticated');
+      localStorage.removeItem('verihire_google_profile');
       setIsAuthenticated(false);
       setCurrentScreen('screen1_login');
       showToast('Session securely closed.');
